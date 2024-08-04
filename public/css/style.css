@@ -8,18 +8,16 @@
 /* Background */
 body {
   background-color: #f2f2f2;
-  font-family: Arial, sans-serif;
+  font-family: poppins, sans-serif;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
+  background-color: #2DB263;
   padding: 10px 30px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-top: 3px solid #00bcd4;
-  border-bottom: 3px solid #00bcd4;
 }
 
 .navbar .logo img {
@@ -28,6 +26,11 @@ body {
   max-height: 240px; /* Define a altura máxima da imagem */
 }
 
+.navbar .logo img {
+  max-width: 30%; /* Garante que a imagem não ultrapasse o contêiner */
+  height: auto; /* Mantém a proporção da imagem */
+  max-height: 240px; /* Define a altura máxima da imagem */
+}
 
 .navbar .nav-links {
   list-style: none;
@@ -40,13 +43,13 @@ body {
 
 .navbar .nav-links li {
   margin-left: 20px;
-  border: 1px solid #dcdcdc; /* Borda cinza clara */
   border-radius: 5px; /* Bordas arredondadas */
   padding: 8px 0px; /* Espaçamento interno */
 }
 
 .navbar .nav-links a {
-  color: #333;
+  color: white;
+  border: 1px solid transparent;
   text-decoration: none;
   font-weight: 500;
   padding: 10px 15px;
@@ -56,7 +59,7 @@ body {
 
 .navbar .nav-links a:hover,
 .navbar .nav-links a.active {
-  background-color: #1F8755;
+  border: 1px solid #fff;
   color: #fff;
 }
 
@@ -87,24 +90,22 @@ body {
 
 /* Main Content */
 .main-content {
-  border-top: 3px solid #ffee00;
   display: flex;
-  padding: 20px;
+  padding: 0px 20px 20px 0px;
 }
 
 .menu {
-  width: 20%;
-  background-color: #f4f4f4; /* Cor de fundo mais suave */
-  border: 1px solid #ddd; /* Borda mais clara */
+  width: 16%;
+  height: 100%;
+  background-color: #2db263;/* Cor de fundo mais suave *//* Borda mais clara */
   padding: 20px;
   margin-right: 20px;
-  border-radius: 8px; /* Bordas arredondadas */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
 .menu h3 {
   margin-bottom: 20px;
-  color: #333; /* Cor do texto do título */
+  color: #ffffff; /* Cor do texto do título */
   font-size: 1.2em; /* Tamanho do texto do título */
 }
 
@@ -121,9 +122,9 @@ body {
 .menu ul li button {
   width: 100%;
   padding: 12px; /* Aumenta o padding para mais conforto */
-  border: 2px solid #1F8755;
-  background-color: #ffffff; /* Cor de fundo dos botões */
-  color: #333; /* Cor do texto dos botões */
+  border: 2px solid transparent;
+  background-color: transparent; /* Cor de fundo dos botões */
+  color: #ffffff; /* Cor do texto dos botões */
   cursor: pointer;
   border-radius: 6px; /* Bordas arredondadas para os botões */
   font-size: 1em; /* Tamanho do texto dos botões */
@@ -131,18 +132,19 @@ body {
 }
 
 .menu ul li button.selected, .menu ul li button:hover {
-  background-color: #1F8755; /* Cor de fundo ao selecionar ou passar o mouse */
+  background-color: #49c57b; /* Cor de fundo ao selecionar ou passar o mouse */
   color: #ffffff; /* Cor do texto ao selecionar ou passar o mouse */
-  border-color: #1F8755; /* Borda igual à cor de fundo */
+  border-color: #49c57b; /* Borda igual à cor de fundo */
 }
 
 
 .user-list {
+  padding: 30px;
   width: 80%;
 }
 
 .user-list h2 {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .user-actions {

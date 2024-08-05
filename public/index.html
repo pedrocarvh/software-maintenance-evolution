@@ -15,28 +15,11 @@
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">
-      <img src="imgs/logo.png" class="ifam" alt="Logo">
-    </div>
-    <ul class="nav-links">
-      <li><a href="#inicio" class="nav-link" id="inicio-btn">Início</a></li>
-      <li><a href="#produto" class="nav-link" id="produto-btn">Produto</a></li>
-      <li><a href="#sobre" class="nav-link" id="sobre-btn">Sobre</a></li>
-      <li><a href="#contato" class="nav-link" id="contato-btn">Contato</a></li>
-    </ul>
-    <form action="/logout" method="POST" class="nav-logout-form">
-      <button type="submit" class="btn-logout">Sair</button>
-    </form>
-  </nav>
-
-
-  <!-- Main Content -->
-  <div class="main-content">
-    <!-- Menu -->
+  <div class="sidebar">
     <div class="menu">
-      <h3>Sistema de Manutenção</h3>
+      <div class="logo-container">
+        <img src="imgs/logo.png" class="ifam" alt="Logo">
+      </div>
       <ul>
         <li><button class="menu-btn selected" id="usuario-btn">Usuário</button></li>
         <li><button class="menu-btn" id="requisicao-btn">Requisição</button></li>
@@ -49,74 +32,130 @@
         <li><button class="menu-btn" id="entrega-btn">Entrega</button></li>
       </ul>
     </div>
+  </div>
 
-    <!-- User List -->
-    <div class="user-list">
-      <h2>Lista de Usuários</h2>
-      <div class="user-actions">
-        <button id="create-user">Criar Novo Usuário</button>
-        <div class="search-container">
-          <input type="text" id="search-user" placeholder="Buscar por nome">
-          <button id="search-btn">Pesquisar</button>
+
+  <div class="main-content">
+    <div class="navbar">
+      <h3>Sistema de Manutenção</h3>
+      <ul class="nav-links">
+        <li><a href="#inicio" class="nav-link" id="inicio-btn">Início</a></li>
+        <li><a href="#produto" class="nav-link" id="produto-btn">Produto</a></li>
+        <li><a href="#sobre" class="nav-link" id="sobre-btn">Sobre</a></li>
+        <li><a href="#contato" class="nav-link" id="contato-btn">Contato</a></li>
+      </ul>
+      <form action="/logout" method="POST" class="nav-logout-form">
+        <button type="submit" class="btn-logout">Sair</button>
+      </form>
+    </div>
+
+    <div class="content">
+      <!-- User List -->
+      <div class="user-list">
+        <h2>Lista de Usuários</h2>
+        <div class="user-actions">
+          <button id="create-user" type="button">Criar Novo Usuário</button>
+          <div class="search-container">
+            <input type="text" id="search-user" placeholder="Buscar por nome">
+            <button id="search-btn">Pesquisar</button>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Login</th>
+              <th>Email</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="user-table-body">
+            <!-- Os usuários serão inseridos aqui pelo JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Modal para Criação de Novo Usuário -->
+      <div id="create-user-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-create">&times;</span>
+          <h2>Criar Novo Usuário</h2>
+          <form id="create-user-form">
+            <label for="create-user-name">Nome:</label>
+            <input type="text" id="create-user-name" name="name" required>
+            <label for="create-user-email">Email:</label>
+            <input type="email" id="create-user-email" name="email" required>
+            <label for="create-user-password">Senha:</label>
+            <input type="password" id="create-user-password" name="password" required>
+            <button type="submit">Criar Usuário</button>
+          </form>
+
         </div>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Login</th>
-            <th>Email</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody id="user-table-body">
-          <!-- Os usuários serão inseridos aqui pelo JavaScript -->
-        </tbody>
-      </table>
-    </div>
 
-    <!-- Modal de Visualização -->
-    <!-- Modal de Visualização -->
-    <div id="view-modal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Detalhes do Usuário</h2>
-        <p id="modal-name"></p>
-        <p id="modal-username"></p>
-        <p id="modal-email"></p>
+
+
+
+      <!-- Modal de Visualização -->
+      <div id="view-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Detalhes do Usuário</h2>
+          <div class="user-details">
+            <div class="detail-item">
+              <strong>Nome:</strong>
+              <p id="modal-name"></p>
+            </div>
+            <div class="detail-item">
+              <strong>Login:</strong>
+              <p id="modal-username"></p>
+            </div>
+            <div class="detail-item">
+              <strong>Email:</strong>
+              <p id="modal-email"></p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <!-- Modal de Edição -->
-    <div id="edit-modal" class="modal">
-      <div class="modal-content">
-        <span class="close-edit">&times;</span>
-        <h2>Editar Usuário</h2>
-        <form id="edit-user-form">
-          <input type="hidden" id="edit-user-id">
-          <div>
-            <label for="edit-user-name">Nome:</label>
-            <input type="text" id="edit-user-name" required>
-          </div>
-          <div>
-            <label for="edit-user-login">Login:</label>
-            <input type="text" id="edit-user-login" required>
-          </div>
-          <div>
-            <label for="edit-user-email">Email:</label>
-            <input type="email" id="edit-user-email" required>
-          </div>
-          <button type="submit">Salvar</button>
-        </form>
+
+      <!-- Modal de Edição -->
+      <div id="edit-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-edit">&times;</span>
+          <h2>Editar Usuário</h2>
+          <form id="edit-user-form">
+            <input type="hidden" id="edit-user-id">
+            <div class="form-group">
+              <label for="edit-user-name">Nome:</label>
+              <input type="text" id="edit-user-name" required>
+            </div>
+            <div class="form-group">
+              <label for="edit-user-login">Login:</label>
+              <input type="text" id="edit-user-login" required>
+            </div>
+            <div class="form-group">
+              <label for="edit-user-email">Email:</label>
+              <input type="email" id="edit-user-email" required>
+            </div>
+            <button type="submit" class="save-btn">Salvar</button>
+          </form>
+        </div>
       </div>
+
+
+
     </div>
 
+    <div class="footer">
+      <p>&copy; 2024 Sistema de Manutenção. Todos os direitos reservados.</p>
+    </div>
+  </div>
 
-    <!-- Footer -->
-    <footer>
-      <p>© 2024 - Sistema de Gestão de Usuários</p>
-    </footer>
 
-    <script src="scripts/listar-usuarios.js"></script>
+
+  <script src="scripts/listar-usuarios.js"></script>
+
+
 </body>
 
 </html>

@@ -1,36 +1,95 @@
-/* Reset CSS */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Background */
 body {
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
   background-color: #f2f2f2;
   font-family: poppins, sans-serif;
 }
 
+.sidebar {
+  width: 20%;
+  background-color: #057A55;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 20px; /* Espaçamento abaixo da imagem */
+}
+
+.logo-container img {
+  width: 100%;
+  max-width: 200px; 
+  height: auto; 
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0; /* Remove o padding padrão */
+  margin: 0; /* Remove a margem padrão */
+}
+
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar ul li button {
+  width: 100%;
+  padding: 12px; /* Aumenta o padding para mais conforto */
+  border: 2px solid transparent;
+  background-color: transparent; /* Cor de fundo dos botões */
+  color: #ffffff; /* Cor do texto dos botões */
+  cursor: pointer;
+  border-radius: 6px; /* Bordas arredondadas para os botões */
+  font-size: 1em; /* Tamanho do texto dos botões */
+  transition: all 0.3s ease; /* Transição suave para efeitos de hover */
+}
+
+.sidebar ul li button.selected, .sidebar ul li button:hover {
+  background-color: #49c57b; /* Cor de fundo ao selecionar ou passar o mouse */
+  color: #ffffff; /* Cor do texto ao selecionar ou passar o mouse */
+  border-color: #49c57b; /* Borda igual à cor de fundo */
+}
+
+.main-content {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  background-color: aqua;
+}
+
 .navbar {
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2DB263;
-  padding: 10px 30px;
+  background-color: #2db263;
+  padding: 10px 50px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.navbar .logo img {
-  max-width: 100%; /* Garante que a imagem não ultrapasse o contêiner */
-  height: auto; /* Mantém a proporção da imagem */
-  max-height: 240px; /* Define a altura máxima da imagem */
+.navbar h3 {
+  margin-bottom: 20px;
+  color: #ffffff; /* Cor do texto do título */
+  font-size: 1.2em; 
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  flex: 1; 
 }
 
-.navbar .logo img {
-  max-width: 30%; /* Garante que a imagem não ultrapasse o contêiner */
-  height: auto; /* Mantém a proporção da imagem */
-  max-height: 240px; /* Define a altura máxima da imagem */
-}
 
 .navbar .nav-links {
   list-style: none;
@@ -63,11 +122,6 @@ body {
   color: #fff;
 }
 
-.imagem-ifam {
-  width: 150px;
-  height: auto;
-}
-
 .nav-logout-form {
   margin-left: 20px; /* Espaçamento entre os links e o botão de logout */
 }
@@ -88,59 +142,16 @@ body {
   background-color: #c9302c;
 }
 
-/* Main Content */
-.main-content {
-  display: flex;
-  padding: 0px 20px 20px 0px;
-}
-
-.menu {
-  width: 16%;
-  height: 100%;
-  background-color: #2db263;/* Cor de fundo mais suave *//* Borda mais clara */
+.content {
+  flex: 1;
   padding: 20px;
-  margin-right: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  box-sizing: border-box;
+  background-color: #fff;
 }
-
-.menu h3 {
-  margin-bottom: 20px;
-  color: #ffffff; /* Cor do texto do título */
-  font-size: 1.2em; /* Tamanho do texto do título */
-}
-
-.menu ul {
-  list-style: none;
-  padding: 0; /* Remove o padding padrão */
-  margin: 0; /* Remove a margem padrão */
-}
-
-.menu ul li {
-  margin-bottom: 10px;
-}
-
-.menu ul li button {
-  width: 100%;
-  padding: 12px; /* Aumenta o padding para mais conforto */
-  border: 2px solid transparent;
-  background-color: transparent; /* Cor de fundo dos botões */
-  color: #ffffff; /* Cor do texto dos botões */
-  cursor: pointer;
-  border-radius: 6px; /* Bordas arredondadas para os botões */
-  font-size: 1em; /* Tamanho do texto dos botões */
-  transition: all 0.3s ease; /* Transição suave para efeitos de hover */
-}
-
-.menu ul li button.selected, .menu ul li button:hover {
-  background-color: #49c57b; /* Cor de fundo ao selecionar ou passar o mouse */
-  color: #ffffff; /* Cor do texto ao selecionar ou passar o mouse */
-  border-color: #49c57b; /* Borda igual à cor de fundo */
-}
-
 
 .user-list {
   padding: 30px;
-  width: 80%;
+  width: 100%;
 }
 
 .user-list h2 {
@@ -247,53 +258,226 @@ button.action-btn {
   opacity: 0.7;
 }
 
-
 /* The Modal (background) */
+/* Estilo para o modal */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none; /* Escondido por padrão */
+  position: fixed; /* Fica fixo na tela */
+  z-index: 1; /* Fica em cima de outros elementos */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Habilita rolagem se necessário */
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro com transparência */
 }
 
-/* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  background-color: #fff;
+  margin: 10% auto; /* Centraliza o modal */
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  border-radius: 10px;
+  width: 50%; /* Largura do modal */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 
-/* The Close Button */
-.close, .close-edit {
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
   color: #aaa;
-  float: right;
   font-size: 28px;
   font-weight: bold;
+  cursor: pointer;
 }
 
-.close:hover, .close:focus, .close-edit:hover, .close-edit:focus {
-  color: black;
+.close:hover,
+.close:focus {
+  color: #000;
   text-decoration: none;
   cursor: pointer;
 }
 
+/* Estilo para os detalhes do usuário */
+.user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
 
+.detail-item {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
 
-/* Footer */
-footer {
-  background-color: #f5f5f5;
+.detail-item strong {
+  display: block;
+  margin-bottom: 5px;
   color: #333;
+}
+
+.detail-item p {
+  margin: 0;
+  color: #666;
+  font-size: 16px;
+}
+
+/* Animação para o modal */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-content {
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.close-edit {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-edit:hover,
+.close-edit:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.save-btn {
+  background-color: #4CAF50; /* Verde escuro */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.save-btn:hover {
+  background-color: #45a049; /* Verde mais claro */
+}
+
+/* Estilo para o formulário de criação de usuário */
+
+.close-create {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Estilo do título do modal */
+.modal-content h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Estilo dos rótulos */
+.modal-content label {
+  display: block;
+  margin-top: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Estilo dos campos de entrada */
+.modal-content input[type="text"],
+.modal-content input[type="email"],
+.modal-content input[type="password"] {
+  width: calc(100% - 22px); /* Ajusta a largura dos campos */
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Estilo do botão de envio */
+.modal-content button[type="submit"] {
+  background-color: #4CAF50; /* Cor verde */
+  color: #fff;
+  border: none;
+  padding: 15px 20px;
   text-align: center;
-  padding: 8px;
-  position: fixed;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease; /* Transição suave */
+}
+
+.modal-content button[type="submit"]:hover {
+  background-color: #45a049; /* Cor verde mais escura no hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer {
+  background-color: #f1f1f1; /* Cor de fundo do footer */
+  color: #333; /* Cor do texto */
+  text-align: center;
+  padding: 7px;
   bottom: 0;
   width: 100%;
 }
+

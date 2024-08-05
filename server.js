@@ -145,6 +145,7 @@ app.post('/user', async (req, res) => {
   }
 });
 
+
 app.put('/user/:id', async (req, res) => {
   try {
     const userId = req.params.id;
@@ -165,12 +166,14 @@ app.put('/user/:id', async (req, res) => {
     }
 
     await updateUser(userId, { name, username, email });
-    res.status(200).send('Usuário atualizado com sucesso');
+    res.status(200).json({ success: true, message: 'Usuário atualizado com sucesso' });
   } catch (e) {
     console.error('Erro ao atualizar usuário:', e);
     res.status(500).json({ error: 'Erro ao atualizar usuário' });
   }
 });
+
+
 
 app.delete('/user/:id', async (req, res) => {
   try {
@@ -237,6 +240,10 @@ function checkNotAuthenticated(req, res, next) {
   }
   next();
 }
+
+// Rota para a página de criação de usuário
+
+
 
 // Iniciar o servidor após conectar ao MongoDB
 connectToMongo().then((connected) => {
